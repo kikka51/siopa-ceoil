@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Siopa Ceoil｜中古 笛とボックスの譲り場</title>
+<meta name="description" content="アイリッシュ音楽の中古の笛（ティンホイッスル・ローホイッスル・アイリッシュフルート）とボックス（コンサーティーナ・メロディオン）を、清掃・試奏してから次の弾き手へ。委託販売とレンタル。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Siopa Ceoil｜中古 笛とボックスの譲り場">
+<meta property="og:description" content="アイリッシュ音楽の中古の笛（ティンホイッスル・ローホイッスル・アイリッシュフルート）とボックス（コンサーティーナ・メロディオン）を、清掃・試奏してから次の弾き手へ。委託販売とレンタル。">
+<meta name="theme-color" content="#1F4A35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231F4A35'/%3E%3Cg fill='none' stroke='%23E2BE6E' stroke-width='3.4'%3E%3Ccircle cx='32' cy='34' r='12'/%3E%3Cpath d='M32 8A21 21 0 0 1 32 42A21 21 0 0 1 32 8Z'/%3E%3Cpath d='M32 8A21 21 0 0 1 32 42A21 21 0 0 1 32 8Z' transform='rotate(120 32 34)'/%3E%3Cpath d='M32 8A21 21 0 0 1 32 42A21 21 0 0 1 32 8Z' transform='rotate(240 32 34)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=Klee+One:wght@400;600&amp;family=Shippori+Mincho+B1:wght@700;800&amp;family=Uncial+Antiqua&amp;family=Yusei+Magic&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/rules.js" defer></script>
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="app">
+  <header class="front">
+    <div class="awning" aria-hidden="true"></div>
+    <div class="fascia wood">
+      <p class="shopname">Siopa Ceoil</p>
+      <h1>中古 笛とボックスの譲り場</h1>
+      <div class="knot" aria-hidden="true"></div>
+      <p class="ga">Feadóg · Fliúit · Consairtín · Bosca Ceoil</p>
+    </div>
+    <div class="window">
+      <div class="notice">
+        <p class="notice-h">お知らせ</p>
+        <p class="lead">出番のなくなった笛とボックス（コンサーティーナ・メロディオン）を預かり、清掃して鳴りを確かめてから次の弾き手へ渡します。前の持ち主の手入れに任せない中古楽器を、円安の今、手の届く価格で。</p>
+      </div>
+      <ul class="pops" aria-label="この店の約束">
+        <li><b>洗</b>1点ずつ分解清掃・消毒してます</li>
+        <li><b>鳴</b>全音・全ボタン試奏済み</li>
+        <li><b>記</b>清掃記録を値札に添えます</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="prelaunch" data-when-closed role="status">
+    <strong>開店準備中</strong>
+    <p>古物商許可を取得してから、委託の受付と販売・レンタルを始めます。いまは店の仕組み・清掃基準・規約をご覧いただけます。</p>
+  </div>
+
+  <nav class="tabs" id="main" role="tablist" aria-label="ページの切り替え">
+    <button type="button" role="tab" id="tab-shelf" data-tab="shelf" aria-controls="panel-shelf" aria-selected="true">棚</button>
+    <button type="button" role="tab" id="tab-consign" data-tab="consign" aria-controls="panel-consign" aria-selected="false">楽器を預ける</button>
+    <button type="button" role="tab" id="tab-clean" data-tab="clean" aria-controls="panel-clean" aria-selected="false">清掃基準</button>
+    <button type="button" role="tab" id="tab-terms" data-tab="terms" aria-controls="panel-terms" aria-selected="false">委託規約</button>
+  </nav>
+
+
+  <!-- ============ 棚 ============ -->
+  <section class="tabpanel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf">
+    <div class="shelf-head">
+      <div class="board" aria-live="polite">
+        <h2>本日の棚</h2>
+        <p>販売中<span class="hi" id="board-open">0</span>点　新入荷<span class="hi" id="board-new">0</span>点　レンタル可<span class="hi" id="board-rent">0</span>点</p>
+        <p class="count-line" id="count"></p>
+      </div>
+    </div>
+    <div class="cabinet wood">
+      <div class="cabinet-inner">
+        <div class="filters">
+          <div class="chips" id="type-chips" role="group" aria-label="種類で絞り込む"></div>
+          <label class="inline">キー<select id="key-filter"><option value="all">すべて</option></select></label>
+          <label class="inline">並び<select id="sort"><option value="new">新しい順</option><option value="low">安い順</option><option value="high">高い順</option></select></label>
+          <label class="inline"><input type="checkbox" id="rent-only">レンタル可のみ</label>
+          <label class="inline"><input type="checkbox" id="hide-sold" checked>売約済を隠す</label>
+        </div>
+        <div id="cards" class="grid"></div>
+        <div id="empty" class="empty" hidden>
+          <strong>いまは棚が空です</strong>
+          <p>預かった楽器は清掃と試奏を終えてから並びます。手放したい楽器があれば「楽器を預ける」から。</p>
+        </div>
+      </div>
+    </div>
+    <p class="note shelfnote" data-when-open hidden>購入は各カードの「購入する」からStripeの決済画面へ進みます。決済の確認後、2営業日以内に発送します。到着から3日以内に、説明と著しく違う点があればご連絡ください（委託規約 第9条）。レンタルは「借りる」からクレジットカードを登録して進みます。月額は毎月カードに自動で請求され、保証金は別にご案内します（第13条〜第19条）。</p>
+  </section>
+
+  <!-- ============ 預ける ============ -->
+  <section class="tabpanel" id="panel-consign" role="tabpanel" aria-labelledby="tab-consign" hidden>
+    <div class="prose">
+      <h2 class="h-section">楽器を預ける</h2>
+      <p>譲り場が楽器を預かり、清掃・検品・撮影・販売・発送までを行います。購入者とのやり取りはありません。売れたときだけ手数料をいただきます。</p>
+    </div>
+    <ol class="flow">
+      <li><strong>DMで相談</strong><span>テンプレートを送ってください。受け付けられるか先にお返事します</span></li>
+      <li><strong>発送</strong><span>本人確認のうえ、譲り場へ元払いで送ります</span></li>
+      <li><strong>検品・清掃</strong><span>到着から7日以内。状態ランクと価格を提案します</span></li>
+      <li><strong>掲載</strong><span>合意した価格で<span data-period>90</span>日間掲載します</span></li>
+      <li><strong>入金</strong><span>購入者の受け取り確定から7日以内に振り込みます</span></li>
+    </ol>
+    <div class="rentinfo">
+      <h3>レンタルにも出せます</h3>
+      <p><strong>貸し出すかどうかは、持ち主のあなたが決めます。</strong>初期設定は「販売のみ」です。「レンタル可」と伝えてもらった楽器だけを、売れるまでの間、月額で貸し出します。地域や相手などの条件も付けられ、同意はいつでも取り消せます。借りた人が<span data-window>6</span>か月以内に買えば、払ったレンタル料の<span data-credit>50</span>%を購入代金から引きます。試してから買えるので、高い楽器ほど売れやすくなります。</p>
+      <ul>
+        <li>レンタルの可否と条件は出品者が決め、運営が勝手に貸し出すことはありません</li>
+        <li>月額は販売価格の<span data-rrate>5</span>%（最低<span data-rmin>¥1,500</span>）、最低<span data-rmonths>3</span>か月から</li>
+        <li>貸している間は毎月、その月のレンタル料の<span data-share>60</span>%が振り込まれます（残りは貸し出しの合間の清掃・管理費）</li>
+        <li>借り手はクレジットカードの登録が必須です。月額は毎月カードに自動で請求されるので、取りっぱぐれがありません</li>
+        <li>対象：コンサーティーナ・メロディオン、金属や樹脂のホイッスル・ローホイッスル、樹脂製のアイリッシュフルート</li>
+        <li>対象外：木製の笛（管の中まで丸洗いできないため）</li>
+        <li>返却のたびに清掃基準の全工程をやり直し、貸出回数を商品ページに公開します</li>
+      </ul>
+    </div>
+    <div class="pair">
+    <div class="calc" aria-labelledby="calc-title">
+      <h3 id="calc-title" class="h-box">手取りの目安</h3>
+      <label class="inline">販売価格（円）<input id="c-price" type="number" min="0" step="500" value="12000" class="w-9"></label>
+      <dl class="out" aria-live="polite">
+        <dt>販売価格</dt><dd id="c-out-price">¥12,000</dd>
+        <dt>手数料（<span data-rate>20</span>%・最低<span data-min>¥1,500</span>）</dt><dd id="c-out-fee">−¥2,400</dd>
+        <dt class="net">お手取り</dt><dd class="net" id="c-out-net">¥9,600</dd>
+      </dl>
+      <p class="note">送料（譲り場までの元払い）と振込手数料は別です。購入者への送料は販売価格に含めます。</p>
+    </div>
+    <div class="calc" aria-labelledby="rcalc-title">
+      <h3 id="rcalc-title" class="h-box">レンタルにも出した場合（<span data-rmonths>3</span>か月貸して、そのまま売れたとき）</h3>
+      <dl class="out" aria-live="polite">
+        <dt>月額レンタル料</dt><dd id="r-month">¥600</dd>
+        <dt>毎月のお手取り（貸している間）</dt><dd id="r-monthly">¥360</dd>
+        <dt>お手取り（レンタル分の合計）</dt><dd id="r-own">¥1,080</dd>
+        <dt>購入時の値引き（充当）</dt><dd id="r-credit">−¥900</dd>
+        <dt>お手取り（販売分）</dt><dd id="r-sale">¥8,880</dd>
+        <dt class="net sep">合計のお手取り</dt><dd class="net sep" id="r-total">¥9,960</dd>
+        <dt class="sub">販売だけの場合</dt><dd class="sub" id="r-compare">¥9,600</dd>
+      </dl>
+      <p class="note">「手取りの目安」の販売価格を変えると、こちらも計算し直します。</p>
+    </div>
+    </div>
+    <div class="pair">
+    <div class="tpl">
+      <h3 class="h-box">相談テンプレート</h3>
+      <pre id="tpl-text">【譲り場 委託相談】
+種類：ティンホイッスル / ローホイッスル / アイリッシュフルート / コンサーティーナ / メロディオン / その他
+メーカー・モデル：
+キー：
+素材：
+ボタン数・システム（ボックスのみ）：
+購入時期・使用頻度：
+傷・割れ・不具合（鳴らない音、空気漏れなど）：
+付属品（ケース・説明書など）：
+希望価格：
+レンタル：不可（販売のみ） / 可
+レンタルの条件（可の場合）：
+写真（全体・歌口または蛇腹・刻印・傷）：</pre>
+      <p class="note" data-when-closed>受付は開店後に始めます。テンプレートは事前の確認用です。</p>
+      <div class="row" data-when-open hidden><button type="button" class="b" id="copy-tpl">テンプレートをコピー</button><span class="note">送り先 <span class="contact" data-contact>@hiuchi2025</span></span><span class="note" id="copy-note" hidden>コピーしました</span></div>
+    </div>
+    <div class="ng">
+      <h4>お預かりできないもの</h4>
+      <ul>
+        <li>管の内部にカビが広がっている木製の笛</li>
+        <li>洗浄しても抜けない強い臭いがあるもの</li>
+        <li>出所を説明できないもの、コピー品</li>
+        <li>割れのある木管（修理前提のCランクとして事前に合意した場合を除く）</li>
+        <li>蛇腹に大きな穴・裂けがあるボックス（同上）</li>
+        <li>ネズミの巣や虫の跡があるもの</li>
+        <li>象牙を使った部品があるもの</li>
+      </ul>
+    </div>
+    </div>
+  </section>
+
+  <!-- ============ 清掃基準 ============ -->
+  <section class="tabpanel" id="panel-clean" role="tabpanel" aria-labelledby="tab-clean" hidden>
+    <article class="doc">
+      <div class="prose">
+        <p class="eyebrow">CLEANING STANDARD ・ 第3版</p>
+        <h2>清掃基準</h2>
+        <p>笛は口をつける楽器、ボックスは手と指が長く触れる楽器です。預かった楽器はすべてこの手順で処理してから棚に並べ、処理した項目を各商品の「清掃記録」に残します。素材ごとに耐えられる処理が違うため、手順は種類別です。</p>
+      </div>
+
+      <section>
+        <h3>1. 受け入れ</h3>
+        <ol>
+          <li>開封前に箱の外観、開封後に全体・歌口または蛇腹・刻印・傷を撮影する（清掃前の記録）</li>
+          <li>受付番号（YZ-0001形式）を付け、清掃済みの棚と分けて保管する</li>
+          <li>カビ・強い臭い・割れを確認し、受け入れ不可なら清掃せずに出品者へ連絡する</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>2. 作業の前に</h3>
+        <ul>
+          <li>手洗いのうえニトリル手袋を着ける。1点ごとに交換する</li>
+          <li>作業台を消毒用エタノールで拭く</li>
+          <li>1回に扱うのは1点だけ。ブラシ・スワブは1点ごとに洗って乾かす</li>
+          <li>使う薬剤は台所用中性洗剤と消毒用エタノール（76.9〜81.4vol%）の2種類に限る</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. ティンホイッスル（金属管・樹脂ヘッド）</h3>
+        <ol>
+          <li>ヘッドが外れるか確認する。接着されているものは無理に外さない</li>
+          <li>40℃以下のぬるま湯に中性洗剤を溶かし、管を10分浸け置く。ヘッドは浸け置かず手洗い</li>
+          <li>ボトルブラシで管内を、パイプクリーナーで音孔を掃除する</li>
+          <li>ウィンドウェイは名刺程度の厚紙かデンタルフロスを通して汚れを出す。ブレード（エッジ）には触れない</li>
+          <li>流水ですすぎ、水を振り切ってから立てて24時間以上自然乾燥させる</li>
+          <li>乾燥後、歌口・ウィンドウェイ入口・唇の触れる外側をエタノールで拭き、揮発させる</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>4. ローホイッスル（アルミ・真鍮管）</h3>
+        <ol>
+          <li>ティンホイッスルと同じ手順。管が長いので柄の長いブラシを使う</li>
+          <li>アルミ管はアルカリ性の洗剤で変色するため中性洗剤のみ</li>
+          <li>チューニングスライドの継ぎ目は、乾燥後に固着や緩みがないか確認する</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>5. 樹脂製のアイリッシュフルート（デルリン・ABS）</h3>
+        <ol>
+          <li>ヘッド・ボディ・フットに分解する</li>
+          <li>中性洗剤のぬるま湯で洗い、スワブで管内を通す</li>
+          <li>テノンの糸巻き・コルクは濡らさない。濡れた場合はよく乾かしてから再調整する</li>
+          <li>乾燥後、歌口周りと唇の触れる部分をエタノールで拭く</li>
+          <li>テノンにコルクグリスを薄く塗り直す</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>6. 木製のアイリッシュフルート・木製ホイッスル</h3>
+        <ol>
+          <li>水に浸けない、流水で洗わない</li>
+          <li>分解し、柔らかい布のスワブで管内の汚れを拭き取る</li>
+          <li>外側は固く絞った布（中性洗剤をごく薄く）で拭き、すぐに乾拭きする</li>
+          <li>歌口周りはエタノールを綿棒に少量含ませて拭き、すぐ乾拭きする。塗装仕上げは目立たない場所で先に試す</li>
+          <li>管内が乾いた状態でボアオイルを薄く塗り、余分を拭き取って一晩置く</li>
+          <li>ヘッド・ソケット周りの割れをルーペで確認する</li>
+          <li>内部の完全な除菌はできないため、清掃記録には「拭き取り・オイル」と書く</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>7. キー付きの笛</h3>
+        <ul>
+          <li>パッドは濡らさない。キーの下は乾いたブラシで掃除する</li>
+          <li>キーの戻り、パッドの密閉（吸って音が抜けないか）を確認する</li>
+          <li>パッド交換が必要なものは自分で直さず、状態Cとして説明に書く</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>8. コンサーティーナ・メロディオン（ボックス）</h3>
+        <h4>外装と手の触れる部分</h4>
+        <ol>
+          <li>エンド（金属・木）は固く絞った布で拭き、すぐ乾拭きする。金属エンドの透かし穴の埃は柔らかい刷毛で払う</li>
+          <li>ボタン・持ち手（ハンドバー）・キーボード面は、エタノールを含ませた布で拭く。塗装面は目立たない場所で先に試す</li>
+          <li>革のハンドストラップ・リストストラップは革用クリーナーで拭く。汗じみや臭いが残るものは交換し、交換したことを記録する</li>
+        </ol>
+        <h4>内部</h4>
+        <ol>
+          <li>エンドを外す前に、ネジ・パッド・リードパンの向きを撮影する。元に戻せる自信がない構造のものは開けない</li>
+          <li>内部の埃は弱いエアブロワーで飛ばす。リードの隙間に向けて強く吹かない</li>
+          <li>リードは原則触らない。錆やゴミ詰まりで鳴らない音がある場合だけ清掃・調整し、その音名を記録する</li>
+          <li>パッドの沈み・剥がれ、バルブ（革弁）の反りや剥がれを確認する</li>
+        </ol>
+        <h4>蛇腹</h4>
+        <ol>
+          <li>水・エタノールは使わず、乾いた布で拭く</li>
+          <li>暗い部屋で内側にライトを入れ、角や折り目からの光漏れ（穴・裂け）を探す</li>
+          <li>角の擦れ、紙や革の剥がれは写真で記録し、説明に書く</li>
+        </ol>
+        <h4>臭い</h4>
+        <ol>
+          <li>カビやタバコの臭いがある場合、湿度40〜60%の部屋で蛇腹を開け閉めしながら数日換気する</li>
+          <li>それでも臭いが残るものは掲載しない</li>
+        </ol>
+      </section>
+
+      <div class="ng">
+        <h4>しないこと</h4>
+        <ul>
+          <li>煮沸・熱湯・食洗機（樹脂ヘッドと木が変形する）</li>
+          <li>塩素系漂白剤・アルカリ洗剤・研磨剤</li>
+          <li>ブレードを削る、こする</li>
+          <li>メッキや塗装のある管の金属磨き</li>
+          <li>木管へのエタノールの大量使用（割れの原因になる）</li>
+          <li>ボックスの蛇腹・パッド・バルブ・リードに水やエタノールを付ける</li>
+          <li>リードを削っての調律（鳴らない音の清掃を超える調整は、説明に書いたうえで専門の修理に回す）</li>
+          <li>乾燥剤の入れすぎ（木のエンドや革が乾きすぎて割れる）</li>
+        </ul>
+      </div>
+
+      <section>
+        <h3>9. 検品と試奏</h3>
+        <div class="tbl"><table>
+          <thead><tr><th>項目</th><th>見るところ</th><th>記録</th></tr></thead>
+          <tbody>
+            <tr><td>外観</td><td>割れ・ひび、ブレードの欠け、ヘッドの緩みや固着</td><td>傷は位置を写真で</td></tr>
+            <tr><td>鳴り</td><td>最低音から第2オクターブ上まで、詰まり・裏返り・息漏れ</td><td>試奏動画を撮る</td></tr>
+            <tr><td>ピッチ</td><td>チューナー（A=440）で各音のずれ</td><td>最大のずれをセント単位で</td></tr>
+            <tr><td>臭い</td><td>乾燥・換気の後に臭いが残っていないか</td><td>残る場合は掲載しない</td></tr>
+            <tr><td>空気漏れ（ボックス）</td><td>ボタンを押さずに蛇腹を閉じ、圧が抜ける速さ</td><td>漏れの有無と場所</td></tr>
+            <tr><td>ボタン・パッド（ボックス）</td><td>全ボタンの戻り・引っかかり、パッドからの漏れ音</td><td>不良ボタンの位置</td></tr>
+            <tr><td>リード（ボックス）</td><td>押し・引き両方向の全音。鳴り出しの遅れ、ビビり、うなり</td><td>不良の音名と方向</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">笛の試奏は清掃とエタノール消毒の後に行い、試奏後にもう一度歌口をエタノールで拭く。古いコンサーティーナはA=440より高い旧ピッチ（A=452など）のことがあるので、基準ピッチも記録する。</p>
+      </section>
+
+      <section>
+        <h3>10. 保管と発送</h3>
+        <ul>
+          <li>清掃済みの笛は個別のチャック袋に入れ、「清掃済 日付・受付番号」のシールで封をする</li>
+          <li>発送時はこの封を開けずに梱包する。購入者には「届いたら一度ぬるま湯で軽くすすぐと安心です」と案内を同封する</li>
+          <li>清掃から90日を超えた笛は、発送前に歌口の消毒をやり直す</li>
+          <li>ボックスは湿度40〜60%の場所で、蛇腹を閉じた状態で保管する。発送時は蛇腹をストラップかベルトで閉じて固定し、ケースごと緩衝材で包む</li>
+          <li>ボックスは発送前にボタン・持ち手をもう一度エタノールで拭く</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>11. 貸し出しの合間</h3>
+        <ol>
+          <li>返却された楽器は、受け入れと同じく清掃前の写真を撮り、破損・欠品を確認する</li>
+          <li>笛は清掃基準の全工程を最初からやり直す。乾燥は48時間以上とる</li>
+          <li>ヘッドが外れるホイッスルは、ヘッドも中性洗剤で洗ってからエタノールで拭く</li>
+          <li>ボックスはボタン・持ち手・ストラップの消毒と、蛇腹・全リードの点検をやり直す</li>
+          <li>返却から72時間は次の貸し出しに回さない</li>
+          <li>貸出回数と清掃日を掲載に反映する</li>
+          <li>木製の笛は貸し出さない</li>
+        </ol>
+      </section>
+
+      <div class="ok">
+        <h4>清掃記録に残す項目</h4>
+        <p>受付番号／清掃日／実施した手順（チェック）／使った薬剤／乾燥時間／ピッチの記録／清掃前後の写真／貸出回数。掲載ページには手順・清掃日・ピッチ・貸出回数を公開し、写真と台帳は運営側で保管します。</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 委託規約 ============ -->
+  <section class="tabpanel" id="panel-terms" role="tabpanel" aria-labelledby="tab-terms" hidden>
+    <article class="doc">
+      <div class="prose">
+        <p class="eyebrow">CONSIGNMENT TERMS ・ 第3版</p>
+        <h2>委託規約</h2>
+        <p>楽器を預ける方（以下「出品者」）と、譲り場の運営者（以下「運営」）との取り決めです。楽器を発送した時点で、この規約に同意したものとします。第13条から第19条のレンタルの条項は、楽器を借りる方（以下「借り手」）にも適用します。</p>
+      </div>
+      <div class="clause"><h4><span class="mono">第1条</span>対象</h4><p>アイリッシュ音楽などに使うティンホイッスル、ローホイッスル、アイリッシュフルート、コンサーティーナ、メロディオン（ボタンアコーディオン）とその付属品を対象とします。「お預かりできないもの」に当たる楽器は受け付けません。</p></div>
+      <div class="clause"><h4><span class="mono">第2条</span>申し込みと本人確認</h4><p>DMで事前に相談し、運営が受け付けを伝えた後に発送してください。古物営業法に基づき、発送前に氏名・住所・生年月日・職業の確認を行います。確認できない場合はお預かりしません。</p></div>
+      <div class="clause"><h4><span class="mono">第3条</span>送料</h4><p>運営までの送料は出品者の負担（元払い）です。着払いの荷物は受け取りません。</p></div>
+      <div class="clause"><h4><span class="mono">第4条</span>検品と価格</h4><p>運営は到着から7日以内に検品し、状態ランクと販売価格を提案します。出品者の同意をもって掲載します。事前の説明と状態が大きく違う場合、運営は価格の再提案または返送を選べます。この場合の返送料は出品者の負担です。</p></div>
+      <div class="clause"><h4><span class="mono">第5条</span>清掃</h4><p>運営は「清掃基準」に従って清掃・検品を行います。清掃にかかる費用は手数料に含みます。清掃によって素材の経年劣化（変色、既存のひびの進行など）が表に出ることがあり、これについて運営は責任を負いません。</p></div>
+      <div class="clause"><h4><span class="mono">第6条</span>掲載期間と値下げ</h4><p>掲載期間は<span data-period>90</span>日です。期間中の値下げは出品者の同意を得て行います。期間が終わったら、出品者は再掲載か返送を選びます。返送料は出品者の負担です。</p></div>
+      <div class="clause"><h4><span class="mono">第7条</span>手数料</h4><p>売れた場合、販売価格の<span data-rate>20</span>%（最低<span data-min>¥1,500</span>）を手数料としていただきます。購入者への送料と決済手数料は手数料に含みます。売れなかった場合、手数料はかかりません。</p></div>
+      <div class="clause"><h4><span class="mono">第8条</span>支払い</h4><p>購入者の受け取りが確定した日（到着から3日経過、または購入者の受け取り連絡のどちらか早い日）から7日以内に、販売価格から手数料を引いた額を出品者の口座へ振り込みます。振込手数料は出品者の負担です。</p></div>
+      <div class="clause"><h4><span class="mono">第9条</span>購入者からの返品</h4><p>到着から3日以内に、掲載内容と著しく違う点の連絡があった場合に限り返品を受けます。原因が運営の検品漏れなら運営が負担し、出品者には影響しません。それ以外の返品は受けません。</p></div>
+      <div class="clause"><h4><span class="mono">第10条</span>取り下げ</h4><p>出品者は売約前であればいつでも取り下げられます。清掃後の取り下げには清掃・検品料1,000円と返送料をいただきます。</p></div>
+      <div class="clause"><h4><span class="mono">第11条</span>預かり中の破損・紛失</h4><p>運営の過失で破損・紛失した場合、合意済みの販売価格（掲載前なら出品者の希望価格）を上限に補償します。運送中の事故は運送会社の補償によります。天災など運営の責任によらないものは補償しません。</p></div>
+      <div class="clause"><h4><span class="mono">第12条</span>個人情報</h4><p>本人確認と取引記録のために預かった情報は、法令で定められた保存期間のあいだ運営が保管し、それ以外の目的には使いません。購入者に出品者の情報は伝えません。</p></div>
+      <div class="clause"><h4><span class="mono">第13条</span>レンタルの可否は出品者が決める</h4><p>楽器を貸し出すかどうかは、出品者の意向だけで決めます。初期設定は「販売のみ」とし、出品者が書面（DMを含む）で「レンタル可」と伝えた楽器に限って貸し出します。運営が出品者の同意なく貸し出すことはありません。出品者は地域・受け渡し方法・借り手の条件などを指定でき、運営はその条件を守ります。貸し出しによって使用感が増えることは、同意の際に出品者に説明します。木製の笛は貸し出しの対象外です。</p></div>
+      <div class="clause"><h4><span class="mono">第13条の2</span>同意の取り消し</h4><p>出品者はいつでもレンタルの同意を取り消せます。取り消しの連絡を受けた時点で新しい貸し出しは行いません。貸し出し中の場合は、その貸し出しの現在の契約期間が終わった時点で終了し、更新しません。</p></div>
+      <div class="clause"><h4><span class="mono">第14条</span>レンタル料と配分</h4><p>月額は販売価格の<span data-rrate>5</span>%（最低<span data-rmin>¥1,500</span>）、最低期間は<span data-rmonths>3</span>か月です。往復の送料は借り手の負担です。貸し出している間、毎月その月に受け取ったレンタル料の<span data-share>60</span>%を、月末締め・翌月10日までに出品者に振り込みます。振込手数料は運営が負担します。1回の振込額が1,000円に満たない月は翌月に繰り越し、貸し出しが終わった月にまとめて振り込みます。</p></div>
+      <div class="clause"><h4><span class="mono">第15条</span>購入への充当</h4><p>借り手がレンタル開始から<span data-window>6</span>か月以内に購入する場合、支払い済みのレンタル料の<span data-credit>50</span>%を販売価格から差し引きます。この場合の手数料は、差し引いた後の価格をもとに第7条のとおり計算します。</p></div>
+      <div class="clause"><h4><span class="mono">第16条</span>カード登録と保証金</h4><p>借り手は、本人名義のクレジットカードを登録しなければ借りられません（デビットカード・プリペイドカードは不可）。月額は登録したカードに毎月自動で請求します。あわせて、貸し出し前に販売価格の<span data-deposit>20</span>%を保証金として預かり、返却後の検品を終えてから7日以内に返金します。破損・欠品・未返却があった場合は、修理費や補填額を保証金から差し引き、足りない分は登録したカードに請求します。借り手はこの請求に、登録の時点で同意するものとします。</p></div>
+      <div class="clause"><h4><span class="mono">第17条</span>破損と使用感</h4><p>通常の使用による摩耗は出品者の負担とします。落下、水濡れ、改造、紛失など借り手の責任による破損は借り手の負担とし、保証金を超える分も請求します。</p></div>
+      <div class="clause"><h4><span class="mono">第18条</span>貸し出し中の扱い</h4><p>貸し出し中の楽器は、ほかの人に販売しません。借り手が購入しない場合、返却後の清掃を終えてから販売を再開します。</p></div>
+      <div class="clause"><h4><span class="mono">第19条</span>貸し出しの合間の清掃</h4><p>運営は返却のたびに清掃基準の「貸し出しの合間」の手順を行い、清掃日と貸出回数を商品ページに公開します。</p></div>
+      <div class="clause"><h4><span class="mono">第20条</span>規約の変更</h4><p>規約を変える場合はこのページで知らせます。変更前に預かった楽器には、預かった時点の規約を適用します。</p></div>
+    </article>
+  </section>
+
+  <footer>
+    <div class="knot" aria-hidden="true"></div>
+    <p class="shop">Siopa Ceoil</p>
+    <p id="license-line">古物商許可：申請準備中（許可の取得後に受け付けを始めます）</p>
+    <p>お問い合わせ：X <a class="contact" data-contact data-contact-link href="https://x.com/hiuchi2025" target="_blank" rel="noopener noreferrer">@hiuchi2025</a></p>
+    <p><a href="tokushoho.html">特定商取引法に基づく表記</a>　<a href="#terms" data-goto="terms">委託規約</a>　<a href="#clean" data-goto="clean">清掃基準</a></p>
+  </footer>
+</div>
+<noscript><p class="noscript">棚の表示にはJavaScriptが必要です。清掃基準と規約は、JavaScriptを有効にするとご覧いただけます。</p></noscript>
+</body>
+</html>

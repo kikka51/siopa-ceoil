@@ -1,0 +1,7 @@
+# 公開に使う GitHub Actions の更新を月に1回知らせる（固定したバージョンを古いまま放置しないため）
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

@@ -1,0 +1,23 @@
+{
+  "accepting": false,
+  "contact": "@hiuchi2025",
+  "feeRate": 20,
+  "feeMin": 1500,
+  "period": 90,
+  "rentRate": 5,
+  "rentMin": 1500,
+  "rentMonths": 3,
+  "credit": 50,
+  "creditWindow": 6,
+  "ownerShare": 60,
+  "deposit": 20,
+  "license": "",
+  "tokusho": {
+    "seller": "",
+    "manager": "",
+    "address": "",
+    "phone": "",
+    "email": "",
+    "disclosureOnRequest": true
+  }
+}

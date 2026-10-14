@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<title>掲載エディタ｜Siopa Ceoil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Shippori+Mincho+B1:wght@700;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="editor.css">
+<script src="../assets/rules.js" defer></script>
+<script src="editor.js" defer></script>
+</head>
+<body>
+<div id="app" class="subpage editor">
+  <header class="subhead">
+    <a class="back" href="../">← 店頭に戻る</a>
+    <h1>掲載エディタ</h1>
+    <p class="note">このページは何も保存・送信しません。フォームで掲載を作り、できあがったJSONを GitHub の <span class="mono">site/data/listings.json</span> に貼り付けて保存すると、自動チェックのあとサイトに反映されます。作業中の内容はこのブラウザにだけ下書きとして残ります。</p>
+    <p class="warnline">出品者の氏名・住所・電話・メールは入れないでください。公開データになります（入っていると公開前チェックで止まります）。</p>
+    <p class="note" id="draft-note" hidden>前回の下書きを読み込みました。</p>
+  </header>
+
+  <section class="panel">
+    <h2 class="h-box">いまの一覧</h2>
+    <div id="list" class="elist"></div>
+  </section>
+
+  <section class="panel">
+    <h2 class="h-box" id="form-title">楽器を掲載する</h2>
+    <form id="form" class="formgroups" novalidate>
+      <fieldset><legend>品物</legend><div class="form">
+        <label>受付番号<input id="f-lot" placeholder="YZ-0001" maxlength="20"></label>
+        <label>種類<select id="f-type"></select></label>
+        <label>キー<input id="f-key" list="keys" placeholder="D ／ C/G" maxlength="20"></label>
+        <label>メーカー<input id="f-maker" placeholder="工房名・ブランド" maxlength="60"></label>
+        <label>モデル<input id="f-model" placeholder="モデル名・キー数・ボタン数" maxlength="60"></label>
+        <label>素材<input id="f-material" list="materials" placeholder="ブラス" maxlength="40"></label>
+        <label>状態<select id="f-cond"></select></label>
+        <label class="wide">写真のURL（Xのポストや共有リンク）<input id="f-photo" type="url" placeholder="https://..." maxlength="500"></label>
+        <label class="wide">説明<textarea id="f-note" placeholder="傷の位置、付属品、音の傾向など" maxlength="600"></textarea></label>
+      </div></fieldset>
+      <fieldset><legend>価格と販売</legend><div class="form">
+        <label>販売価格（円・税込）<input id="f-price" type="number" min="0" step="100" inputmode="numeric" placeholder="12000"></label>
+        <label>掲載状態<select id="f-status"></select></label>
+        <label class="wide">Stripeの支払いリンク<input id="f-pay" type="url" placeholder="https://buy.stripe.com/..." maxlength="200"></label>
+      </div></fieldset>
+      <fieldset><legend>レンタル（持ち主が希望した場合だけ）</legend><div class="form">
+        <label class="chk wide"><input type="checkbox" id="f-rent">レンタル可にする</label>
+        <label>持ち主の同意日<input id="f-consent" type="date"></label>
+        <label>これまでの貸出回数<input id="f-rentals" type="number" min="0" step="1" placeholder="0"></label>
+        <label class="wide">持ち主のレンタル条件<input id="f-rentcond" placeholder="例：香川県内・手渡しのみ" maxlength="120"></label>
+        <label class="wide">Stripeのレンタル用リンク（定期支払い）<input id="f-rentpay" type="url" placeholder="https://buy.stripe.com/..." maxlength="200"></label>
+      </div></fieldset>
+      <fieldset><legend>清掃記録</legend><div class="form">
+        <label>清掃日<input id="f-cleaned" type="date"></label>
+        <label class="wide">ピッチ・試奏の記録<input id="f-pitch" placeholder="例：A=440で全音±10セント以内" maxlength="160"></label>
+        <div class="wide"><p class="note">実施した清掃・検品</p><div class="checks" id="f-checks"></div></div>
+      </div></fieldset>
+      <div class="row">
+        <button type="submit" class="b primary" id="f-submit">一覧に追加</button>
+        <button type="button" class="b" id="f-cancel" hidden>編集をやめる</button>
+      </div>
+      <p class="warnline" id="f-error" role="alert"></p>
+    </form>
+    <datalist id="keys"><option value="D"><option value="C"><option value="B♭"><option value="E♭"><option value="F"><option value="G"><option value="A"><option value="Low D"><option value="Low C"><option value="Low E♭"><option value="Low F"><option value="Low G"><option value="C/G"><option value="G/D"><option value="B/C"><option value="C#/D"><option value="D/G"><option value="A/D"><option value="B♭/F"></datalist>
+    <datalist id="materials"><option value="ブラス"><option value="ニッケル"><option value="アルミ"><option value="デルリン"><option value="樹脂"><option value="ブラックウッド"><option value="ツゲ"><option value="ココボロ"><option value="竹"><option value="メタルエンド・コンサーティーナリード"><option value="メタルエンド・アコーディオンリード"><option value="ウッドエンド・アコーディオンリード"></datalist>
+  </section>
+
+  <section class="panel">
+    <h2 class="h-box">GitHubに貼るJSON</h2>
+    <div id="out-status"></div>
+    <textarea id="out" class="out" readonly rows="12" aria-label="listings.json の中身"></textarea>
+    <div class="row">
+      <button type="button" class="b primary" id="copy-out">JSONをコピー</button>
+      <a class="btn" id="gh-link" href="#" target="_blank" rel="noopener noreferrer">GitHubで listings.json を開く</a>
+      <span class="note" id="copy-note" hidden>コピーしました</span>
+    </div>
+    <button type="button" class="b danger" id="reset">下書きを捨てて公開中の内容に戻す</button>
+  </section>
+</div>
+</body>
+</html>
